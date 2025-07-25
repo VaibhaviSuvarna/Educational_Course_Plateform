@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/CourseDetail.jsx", "src/components/HighlightedCourses.jsx", "src/components/InstituteInfo.jsx", "src/components/Cards.jsx", "src/app/page.jsx", "src/components/HomePage.jsx", "src/components/Navbar.jsx", "src/components/HeroSection.jsx"],
   "exclude": ["node_modules"]
 }
