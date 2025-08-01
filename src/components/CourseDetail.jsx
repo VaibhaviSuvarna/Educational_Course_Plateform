@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 
 function CourseDetail({ course }) {
+
+  
    
   return (
     <>
