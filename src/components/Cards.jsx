@@ -12,7 +12,7 @@ export default function Cards({
   onPlay 
 }) {
   return (
-    <div className='flex rounded-2xl p-3 flex-col m-5 w-full border-l-4 border-b-4  max-w-md h-[430px] transition-all duration-300 hover:shadow-2xl hover:border-slate-900'>
+    <div className='hover:scale-110  flex rounded-2xl p-3 flex-col m-5 w-full border-l-4 border-b-4  max-w-md h-[430px] transition-all duration-300 hover:shadow-2xl hover:border-slate-900'>
       
       
       <div className='relative group cursor-pointer' onClick={onPlay}>

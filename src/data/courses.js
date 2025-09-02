@@ -12,6 +12,20 @@ export const courses = [
     originalPrice: "₹20,000",
     videoId: "vhsOrsOQiCQ",
     thumbnail: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    contents: [
+      {
+        title: "Introduction to CA Foundation",
+        subtopics: ["Overview of the course", "Exam pattern", "Study tips"]
+      },
+      {
+        title: "Accounting Basics",
+        subtopics: ["Principles of Accounting", "Double Entry System", "Journal Entries"]
+      },
+      {
+        title: "Business Laws",
+        subtopics: ["Indian Contract Act", "Sale of Goods Act", "Negotiable Instruments"]
+      }
+    ],
   },
   {
     id: 2,
@@ -27,6 +41,20 @@ export const courses = [
     videoId: "vhsOrsOQiCQ",
     
     thumbnail: "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    contents: [
+      {
+        title: "Company Law",
+        subtopics: ["Incorporation of Companies", "Types of Companies", "Company Meetings"]
+      },
+      {
+        title: "Tax Laws",
+        subtopics: ["Income Tax Basics", "GST Overview", "Tax Planning"]
+      },
+      {
+        title: "Financial Management",
+        subtopics: ["Capital Budgeting", "Working Capital Management", "Dividend Policy"]
+      }
+    ],
   },
   {
     id: 3,
@@ -41,6 +69,20 @@ export const courses = [
     originalPrice: "₹17,500",
     videoId: "vhsOrsOQiCQ",
     thumbnail: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    contents: [
+      {
+        title: "Economics Fundamentals",
+        subtopics: ["Microeconomics vs Macroeconomics", "Demand & Supply", "Market Structures"]
+      },
+      {
+        title: "Accounting Principles",
+        subtopics: ["Bookkeeping", "Trial Balance", "Final Accounts"]
+      },
+      {
+        title: "Business Laws",
+        subtopics: ["Contract Act", "Company Law Basics"]
+      }
+    ],
   },
   {
     id: 4,
@@ -56,6 +98,20 @@ export const courses = [
     videoId: "vhsOrsOQiCQ",
     
     thumbnail: "https://plus.unsplash.com/premium_photo-1661543097545-ae9c630e6e32?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    contents: [
+      {
+        title: "Nature and Significance of Management",
+        subtopics: ["Definition of Management", "Functions of Management", "Levels of Management"]
+      },
+      {
+        title: "Principles of Management",
+        subtopics: ["Fayol's Principles", "Taylor's Scientific Management"]
+      },
+      {
+        title: "Business Environment",
+        subtopics: ["Economic Environment", "Political Environment"]
+      }
+    ],
   },
   {
     id: 5,
@@ -70,6 +126,20 @@ export const courses = [
     originalPrice: "₹6,000",
     videoId: "vhsOrsOQiCQ",
     thumbnail: "https://images.unsplash.com/photo-1612178991541-b48cc8e92a4d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    contents: [
+      {
+        title: "Introduction to Economics",
+        subtopics: ["Definition & Scope", "Central Problems of Economy"]
+      },
+      {
+        title: "Microeconomics",
+        subtopics: ["Consumer Equilibrium", "Theory of Demand", "Elasticity of Demand"]
+      },
+      {
+        title: "Macroeconomics",
+        subtopics: ["National Income", "Money & Banking", "Government Budget"]
+      }
+    ],
   },
   {
     id: 6,
@@ -84,5 +154,19 @@ export const courses = [
     originalPrice: "₹6,500",
     videoId: "vhsOrsOQiCQ",
     thumbnail: "https://plus.unsplash.com/premium_photo-1661634411925-083e5d0ef234?q=80&w=1258&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    contents: [
+      {
+        title: "Tally Basics",
+        subtopics: ["Company Creation", "Ledger Creation", "Voucher Entry"]
+      },
+      {
+        title: "GST Concepts",
+        subtopics: ["GST Registration", "GST Invoicing", "GST Returns"]
+      },
+      {
+        title: "Practical Assignments",
+        subtopics: ["Real-life Billing", "Tax Calculation"]
+      }
+    ],
   },
 ];
