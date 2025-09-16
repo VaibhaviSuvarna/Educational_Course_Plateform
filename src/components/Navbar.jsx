@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Search, Bell, Menu, X} from "lucide-react";
+import { Search, Bell, Menu, X, UniversityIcon} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -23,37 +23,31 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="text-md font-semibold bg-slate-100 border-b border-gray-200 px-4  relative">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+    <nav className="text-md font-semibold border-b border-gray-200 w-full relative px-4 m-0">
+      <div className="flex items-center justify-between w-full p-0 m-0">
         {/* Logo and Brand */}
         <div className="flex items-center space-x-2 flex-shrink-0">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 -mt-2 sm:-mt-4 flex items-center justify-center overflow-visible bg-white">
-            <Image 
-              src="/logo.png" 
-              alt="Logo" 
-              width={96} 
-              height={96}  
-              className="w-full bg-slate-100  h-full object-contain"
-            />
+          <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-10 lg:h-20 -mt-2 sm:-mt-4  flex items-center justify-center overflow-visible bg-white">
+            <UniversityIcon className=" text-blue-900"></UniversityIcon>
           </div>
-          <h1 className=" text-lg  lg:text-2xl sm:text-xl font-bold text-blue-900">AK Institute</h1>
+          <h1 className=" text-lg  lg:text-2xl sm:text-xl font-bold text-blue-900">Institute</h1>
         </div>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center space-x-6">
-          <Link href="/" className="transition duration-300 ease-in-out hover:font-medium hover:underline hover:underline-offset-4  text-black hover:text-blue-700 ">
+          <Link href="/" className="transition duration-300 ease-in-out hover:font-medium hover:underline hover:underline-offset-4  text-gray-700 hover:text-blue-700 ">
             Home
           </Link>
-          <a href="#" className="transition duration-300 ease-in-out hover:font-medium hover:underline hover:underline-offset-4  text-black hover:text-blue-700 ">
+          <a href="#" className="transition duration-300 ease-in-out hover:font-medium hover:underline hover:underline-offset-4  text-gray-700 hover:text-blue-700 ">
             About
           </a>
-          <a href="#" className="transition duration-300 ease-in-out hover:font-medium hover:underline hover:underline-offset-4  text-black hover:text-blue-700 ">
+          <a href="#" className="transition duration-300 ease-in-out hover:font-medium hover:underline hover:underline-offset-4  text-gray-700 hover:text-blue-700 ">
           Courses
           </a>
-          <a href="#" className="transition duration-300 ease-in-out hover:font-medium hover:underline hover:underline-offset-4  text-black hover:text-blue-700 ">
+          <a href="#" className="transition duration-300 ease-in-out hover:font-medium hover:underline hover:underline-offset-4  text-gray-700 hover:text-blue-700 ">
             Dashboard
           </a>
-          <a href="#" className="transition duration-300 ease-in-out hover:font-medium hover:underline hover:underline-offset-4  text-black hover:text-blue-700 ">
+          <a href="#" className="transition duration-300 ease-in-out hover:font-medium hover:underline hover:underline-offset-4  text-gray-700 hover:text-blue-700 ">
             Contact Us
           </a>
         </div>
@@ -72,7 +66,10 @@ const Navbar = () => {
             <Bell className="w-5 h-5" />
           </Button>
           <Button variant="default" className="bg-blue-700 text-white hover:bg-gray-800 px-4 lg:px-6 py-2 text-sm lg:text-base">
-            Login / Register
+            Login
+          </Button>
+          <Button variant="default" className=" text-white hover:bg-gray-800 px-4 lg:px-6 py-2 text-sm lg:text-base">
+           Sign Up
           </Button>
         </div>
 

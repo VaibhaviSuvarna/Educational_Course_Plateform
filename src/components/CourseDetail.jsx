@@ -109,7 +109,7 @@ function AccordionTopic({ topic }) {
   return (
     <div className="border w-full rounded-lg">
       <button
-        className="w-full flex justify-between items-center px-4 py-3 font-semibold text-left bg-gray-200 focus:outline-none hover:bg-gray-100"
+        className="w-full flex justify-between items-center px-4. py-3 font-semibold text-left bg-gray-200 focus:outline-none hover:bg-gray-100"
         onClick={() => setOpen((prev) => !prev)}
         aria-expanded={open}
       >
