@@ -1,3 +1,32 @@
+## Authentication Setup (NextAuth + Google)
+
+1. Install deps (already installed):
+
+```
+npm install next-auth
+```
+
+2. Create a `.env.local` file with:
+
+```
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=replace-with-a-strong-random-string
+GOOGLE_CLIENT_ID=your-google-oauth-client-id
+GOOGLE_CLIENT_SECRET=your-google-oauth-client-secret
+```
+
+3. In Google Cloud Console → Credentials:
+   - Create OAuth 2.0 Client ID (Web application)
+   - Authorized redirect URI: `http://localhost:3000/api/auth/callback/google`
+
+4. Start the dev server and test sign-in:
+
+```
+npm run dev
+```
+
+The Buy Now button will prompt sign-in if not authenticated.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

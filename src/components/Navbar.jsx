@@ -6,11 +6,16 @@ import { useRouter } from "next/navigation";
 import { Search, Bell, Menu, X, UniversityIcon} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useSession, signIn, signOut } from "next-auth/react";
+import dynamic from "next/dynamic";
+const AuthDialog = dynamic(() => import("@/components/AuthDialog"), { ssr: false });
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
   const router = useRouter();
+  const { data: session } = useSession();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -65,12 +70,23 @@ const Navbar = () => {
           <Button variant="ghost" size="icon" className="text-black hover:text-gray-700 hover:bg-gray-100">
             <Bell className="w-5 h-5" />
           </Button>
-          <Button variant="default" className="bg-blue-700 text-white hover:bg-gray-800 px-4 lg:px-6 py-2 text-sm lg:text-base">
-            Login
-          </Button>
-          <Button variant="default" className=" text-white hover:bg-gray-800 px-4 lg:px-6 py-2 text-sm lg:text-base">
-           Sign Up
-          </Button>
+          {session ? (
+            <>
+              <span className="hidden lg:inline text-sm text-gray-700">Hi, {session.user?.name || session.user?.email}</span>
+              <Button variant="default" className=" text-white hover:bg-gray-800 px-4 lg:px-6 py-2 text-sm lg:text-base" onClick={() => signOut()}>
+                Sign out
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button variant="default" className="bg-blue-700 text-white hover:bg-gray-800 px-4 lg:px-6 py-2 text-sm lg:text-base" onClick={() => setAuthOpen(true)}> 
+                Login
+              </Button>
+              <Button variant="default" className=" text-white hover:bg-gray-800 px-4 lg:px-6 py-2 text-sm lg:text-base" onClick={() => setAuthOpen(true)}> 
+               Sign Up
+              </Button>
+            </>
+          )}
         </div>
 
         {/* Mobile Right Side */}
@@ -156,17 +172,28 @@ const Navbar = () => {
             </div>
 
             <div className="pt-4 pb-2">
-              <Button 
-                variant="default" 
-                className="w-full bg-blue-700 text-white hover:bg-gray-800"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Login / Register
-              </Button>
+              {session ? (
+                <Button 
+                  variant="default" 
+                  className="w-full bg-blue-700 text-white hover:bg-gray-800"
+                  onClick={() => { setIsMobileMenuOpen(false); signOut(); }}
+                >
+                  Sign out
+                </Button>
+              ) : (
+                <Button 
+                  variant="default" 
+                  className="w-full bg-blue-700 text-white hover:bg-gray-800"
+                  onClick={() => { setIsMobileMenuOpen(false); setAuthOpen(true); }}
+                >
+                  Login / Register
+                </Button>
+              )}
             </div>
           </div>
         </div>
       )}
+      <AuthDialog open={authOpen} onClose={() => setAuthOpen(false)} />
     </nav>
   );
 };
