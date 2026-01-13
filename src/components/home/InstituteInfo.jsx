@@ -114,12 +114,9 @@ const InstituteInfo = () => {
 
           {/* Right Side - Video and Info */}
           <div className="space-y-6">
-            
-
-              <video className="text-blue-240 mx-auto hover:shadow-lg hover:shadow-gray-500/50 shadow-indigo-300  mb-4 filter saturate-150 rounded-4xl" autoPlay muted loop playsInline>
-                <source src="/akvideo.mp4" type="video/mp4" className="w-[560px] h-80 "/>
-              </video>
-            
+            <video className="text-blue-240 mx-auto hover:shadow-lg hover:shadow-gray-500/50 shadow-indigo-300 mb-4 filter saturate-150 rounded-4xl" autoPlay muted loop playsInline>
+              <source src="/akvideo.mp4" type="video/mp4" className="w-[560px] h-80" />
+            </video>
 
             <div className="bg-gray-50 rounded-2xl p-8">
               <h4 className="text-2xl text-center font-bold mb-4">Best CA & CS Coaching in Pimpri-Chinchwad</h4>

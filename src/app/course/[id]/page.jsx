@@ -1,12 +1,15 @@
 import React from "react";
-import CourseDetail from "@/components/CourseDetail";
+import CourseDetail from "@/components/course/CourseDetail";
 import { courses } from "@/data/courses";
+import { notFound } from "next/navigation";
 
-const CoursePage = ({ params }) => {
+const CoursePage = async ({ params }) => {
   const courseId = parseInt(params.id);
   const course = courses.find((c) => c.id === courseId);
 
-  if (!course) return <p>Course not found</p>;
+  if (!course) {
+    notFound();
+  }
 
   return <CourseDetail course={course} />;
 };

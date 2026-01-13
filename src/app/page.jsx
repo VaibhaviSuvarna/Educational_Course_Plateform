@@ -1,13 +1,7 @@
-import HomePage from '@/components/HomePage'
-import CourseDetail from '@/components/CourseDetail'
-import React from 'react'
+import HomePage from '@/components/home/HomePage'
 
 function page() {
-  return (
-   <><HomePage/>
-    {/* <CourseDetail/>  */}
-    </>
-  )
+  return <HomePage />
 }
 
 export default page

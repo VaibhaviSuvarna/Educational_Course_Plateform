@@ -1,9 +1,10 @@
 'use client'
-import React from "react";
-import Navbar from "./Navbar";
+import React, { useState, useEffect } from "react";
+import Navbar from "@/components/layout/Navbar";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import {
   Clock,
   Contact,
@@ -14,10 +15,80 @@ import {
   Share2,
   ShieldCheck,
   User,
+  CheckCircle2,
+  BookOpen,
 } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 function CourseDetail({ course }) {
   const { data: session } = useSession();
+  const router = useRouter();
+  const [isEnrolled, setIsEnrolled] = useState(false);
+  const [checkingEnrollment, setCheckingEnrollment] = useState(true);
+  const [enrollDialogOpen, setEnrollDialogOpen] = useState(false);
+  const [enrolling, setEnrolling] = useState(false);
+
+  useEffect(() => {
+    if (session?.user?.email) {
+      checkEnrollment();
+    } else {
+      setCheckingEnrollment(false);
+    }
+  }, [session, course.id]);
+
+  const checkEnrollment = async () => {
+    try {
+      const response = await fetch(`/api/enroll/${course.id}`);
+      if (response.ok) {
+        const data = await response.json();
+        setIsEnrolled(data.enrolled);
+      }
+    } catch (error) {
+      console.error("Failed to check enrollment:", error);
+    } finally {
+      setCheckingEnrollment(false);
+    }
+  };
+
+  const handleEnroll = async () => {
+    if (!session) {
+      signIn();
+      return;
+    }
+
+    setEnrolling(true);
+    try {
+      const response = await fetch("/api/enroll", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ courseId: course.id }),
+      });
+
+      if (response.ok) {
+        setIsEnrolled(true);
+        setEnrollDialogOpen(false);
+        router.push("/dashboard");
+      } else {
+        const errorData = await response.json();
+        const errorMessage = errorData.error || "Failed to enroll";
+        console.error("Enrollment error:", errorMessage);
+        alert(errorMessage);
+      }
+    } catch (error) {
+      console.error("Enrollment error:", error);
+      alert(error.message || "Failed to enroll. Please try again.");
+    } finally {
+      setEnrolling(false);
+    }
+  };
 
   
   return (
@@ -141,10 +212,54 @@ function CourseDetail({ course }) {
                   <span>Instant Discount</span>
                   <span className="text-indigo-700 font-semibold">₹1,840 OFF</span>
                 </div>
-                <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <Button size="lg" className="w-full h-12 bg-indigo-700 hover:bg-indigo-800" onClick={() => { if (!session) { signIn(); } else { /* TODO: proceed to checkout */ } }}>Buy Now</Button>
-                  <Button size="lg" variant="secondary" className="w-full h-12">Add to Cart</Button>
-                </div>
+                {checkingEnrollment ? (
+                  <div className="mt-4 flex items-center justify-center py-4">
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-indigo-700"></div>
+                  </div>
+                ) : isEnrolled ? (
+                  <div className="mt-4 space-y-3">
+                    <div className="flex items-center gap-2 text-green-600 font-semibold mb-2">
+                      <CheckCircle2 className="w-5 h-5" />
+                      <span>You are enrolled in this course</span>
+                    </div>
+                    <Link href="/dashboard">
+                      <Button size="lg" className="w-full h-12 bg-indigo-700 hover:bg-indigo-800">
+                        <BookOpen className="w-4 h-4 mr-2" />
+                        Go to Dashboard
+                      </Button>
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <Button 
+                      size="lg" 
+                      className="w-full h-12 bg-indigo-700 hover:bg-indigo-800" 
+                      onClick={() => {
+                        if (!session) {
+                          signIn();
+                        } else {
+                          setEnrollDialogOpen(true);
+                        }
+                      }}
+                    >
+                      Enroll Now
+                    </Button>
+                    <Button 
+                      size="lg" 
+                      variant="secondary" 
+                      className="w-full h-12"
+                      onClick={() => {
+                        if (!session) {
+                          signIn();
+                        } else {
+                          setEnrollDialogOpen(true);
+                        }
+                      }}
+                    >
+                      Add to Cart
+                    </Button>
+                  </div>
+                )}
                 <div className="mt-3">
                   <Button variant="outline" className="w-full">Download Syllabus</Button>
                 </div>
@@ -162,11 +277,49 @@ function CourseDetail({ course }) {
           </div>
         </div>
       </div>
+
+      {/* Enrollment Confirmation Dialog */}
+      <Dialog open={enrollDialogOpen} onOpenChange={setEnrollDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Enroll in {course.title}</DialogTitle>
+            <DialogDescription>
+              You are about to enroll in this course. You will gain lifetime access to all course materials.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-4 space-y-2">
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-gray-600">Course Price:</span>
+              <span className="font-semibold">{course.price}</span>
+            </div>
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-gray-600">Original Price:</span>
+              <span className="line-through text-gray-500">{course.originalPrice}</span>
+            </div>
+          </div>
+          <div className="flex gap-3 justify-end mt-6">
+            <Button
+              variant="outline"
+              onClick={() => setEnrollDialogOpen(false)}
+              disabled={enrolling}
+            >
+              Cancel
+            </Button>
+            <Button
+              className="bg-indigo-700 hover:bg-indigo-800"
+              onClick={handleEnroll}
+              disabled={enrolling}
+            >
+              {enrolling ? "Enrolling..." : "Confirm Enrollment"}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </>
   );
 // AccordionTopic component for dropdown functionality
 function AccordionTopic({ topic, index }) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const panelId = `accordion-panel-${index}`;
   const buttonId = `accordion-button-${index}`;
   return (

@@ -1,5 +1,4 @@
 import { ArrowUpRightIcon, Clock, Star, Users, Play } from 'lucide-react';
-import React from 'react';
 
 export default function Cards({ 
   title, 
@@ -12,17 +11,13 @@ export default function Cards({
   onPlay 
 }) {
   return (
-    <div className='hover:scale-110  flex rounded-2xl p-3 flex-col m-5 w-full border-l-4 border-b-4  max-w-md h-[430px] transition-all duration-300 hover:shadow-2xl hover:border-slate-900'>
-      
-      
+    <div className='hover:scale-110 flex rounded-2xl p-3 flex-col m-5 w-full border-l-4 border-b-4 max-w-md h-[430px] transition-all duration-300 hover:shadow-2xl hover:border-slate-900'>
       <div className='relative group cursor-pointer' onClick={onPlay}>
         <img 
           src={thumbnail || "https://via.placeholder.com/400x200?text=No+Image"} 
           alt="thumbnail" 
           className='rounded-2xl object-cover w-full h-48' 
         />
-        
-        
         <div className='absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 transition duration-300'>
           <Play className='w-10 h-10 text-white opacity-0 group-hover:opacity-100 transition duration-300' />
         </div>

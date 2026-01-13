@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { ExternalLink, X } from "lucide-react";
+import Link from "next/link";
 import Cards from "./Cards";
 import { courses } from "@/data/courses";
 import { useRouter } from "next/navigation";
@@ -44,10 +45,12 @@ const HighlightedCourses = () => {
         </div>
 
         <div className="text-center">
-          <button className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-8 py-4 rounded-lg transition-colors inline-flex items-center">
-            View All Courses
-            <ExternalLink className="w-5 h-5 ml-2" />
-          </button>
+          <Link href="/courses">
+            <button className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-8 py-4 rounded-lg transition-colors inline-flex items-center">
+              View All Courses
+              <ExternalLink className="w-5 h-5 ml-2" />
+            </button>
+          </Link>
         </div>
       </div>
 

@@ -1,7 +1,6 @@
 'use client'
-import React from 'react'
 import { Button } from '@/components/ui/button'
-import { X, Mail, LogIn } from 'lucide-react'
+import { X, LogIn } from 'lucide-react'
 import { signIn } from 'next-auth/react'
 
 export default function AuthDialog({ open, onClose }) {
@@ -47,5 +46,3 @@ export default function AuthDialog({ open, onClose }) {
     </div>
   )
 }
-
-

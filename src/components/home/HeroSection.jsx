@@ -1,7 +1,6 @@
 import { ArrowRight, BookOpen, Users, Award, PlayCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-
 const HeroSection = () => {
   return (
     <section className="bg-white py-8 lg:py-12">
@@ -87,10 +86,6 @@ const HeroSection = () => {
                   alt="Students learning together"
                   className="w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover"
                 />
-                
-                
-                {/* Floating Card - Achievement */}
-                
               </div>
             </div>
           </div>

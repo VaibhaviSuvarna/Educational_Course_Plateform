@@ -1,11 +1,8 @@
-import React from 'react'
-import Navbar from './Navbar'
+import Navbar from '@/components/layout/Navbar'
 import HeroSection from './HeroSection'
 import InstituteInfo from './InstituteInfo'
-import HighlightedCourses from './HighlightedCourses'
+import HighlightedCourses from '@/components/course/HighlightedCourses'
 import ContactUs from './ContactUs'
-
-
 
 function HomePage() {
   return (

@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Youtube, Linkedin, Twitter, MapPin, Phone, Mail, Smartphone } from 'lucide-react';
+import { Facebook, Instagram, Youtube, Linkedin, MapPin, Phone, Mail, Smartphone } from 'lucide-react';
 
 export default function ContactUs() {
   return (
