@@ -2,7 +2,7 @@ import { Facebook, Instagram, Youtube, Linkedin, MapPin, Phone, Mail, Smartphone
 
 export default function ContactUs() {
   return (
-    <section className="bg-slate-950  text-gray-300">
+    <section id="contact" className="bg-slate-950  text-gray-300">
       <div className="max-w-6xl mx-auto p-10">
         <h2 className="text-3xl font-bold mb-8 text-white">Contact Us</h2>
         

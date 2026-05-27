@@ -62,7 +62,7 @@ const InstituteInfo = () => {
   ];
 
   return (
-    <section className="bg-white py-8 lg:py-12">
+    <section id="about" className="bg-white py-8 lg:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

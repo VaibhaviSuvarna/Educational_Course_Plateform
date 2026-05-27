@@ -58,7 +58,7 @@ const Navbar = () => {
           <Link href="/" className="transition duration-300 ease-in-out hover:font-medium hover:underline hover:underline-offset-4  text-gray-700 hover:text-blue-700 ">
             Home
           </Link>
-          <a href="#" className="transition duration-300 ease-in-out hover:font-medium hover:underline hover:underline-offset-4  text-gray-700 hover:text-blue-700 ">
+          <a href="/#about" className="transition duration-300 ease-in-out hover:font-medium hover:underline hover:underline-offset-4  text-gray-700 hover:text-blue-700 ">
             About
           </a>
           <Link href="/courses" className="transition duration-300 ease-in-out hover:font-medium hover:underline hover:underline-offset-4  text-gray-700 hover:text-blue-700 ">
@@ -69,7 +69,7 @@ const Navbar = () => {
               Dashboard
             </Link>
           )}
-          <a href="#" className="transition duration-300 ease-in-out hover:font-medium hover:underline hover:underline-offset-4  text-gray-700 hover:text-blue-700 ">
+          <a href="/#contact" className="transition duration-300 ease-in-out hover:font-medium hover:underline hover:underline-offset-4  text-gray-700 hover:text-blue-700 ">
             Contact Us
           </a>
         </div>
@@ -165,7 +165,7 @@ const Navbar = () => {
                 Home
               </button>
               <a 
-                href="#" 
+                href="/#about" 
                 className="block px-3 py-2 text-black hover:bg-gray-100 rounded-md transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -188,7 +188,7 @@ const Navbar = () => {
                 </Link>
               )}
               <a 
-                href="#" 
+                href="/#contact" 
                 className="block px-3 py-2 text-black hover:bg-gray-100 rounded-md transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
